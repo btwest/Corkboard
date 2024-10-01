@@ -34,21 +34,26 @@ export function resizeBounds(bounds: XYWH, corner: Side, point: Point): XYWH {
     height: bounds.height,
   };
 
+  // Handle resizing from the left
   if ((corner & Side.Left) === Side.Left) {
-    result.x = Math.min(point.x, bounds.x + bounds.width);
-    result.width = Math.abs(bounds.x + bounds.width - point.x);
+    result.x = Math.min(point.x, bounds.x + bounds.width); // Adjust the x position
+    result.width = Math.abs(bounds.x + bounds.width - point.x); // Adjust width
   }
+
+  // Handle resizing from the right
   if ((corner & Side.Right) === Side.Right) {
-    result.x = Math.min(point.x, bounds.x);
-    result.width = Math.abs(point.x - bounds.x);
+    result.width = Math.abs(point.x - bounds.x); // Just adjust the width
   }
+
+  // Handle resizing from the top
   if ((corner & Side.Top) === Side.Top) {
-    result.y = Math.min(point.y, bounds.y + bounds.height);
-    result.height = Math.abs(bounds.y + bounds.height - point.y);
+    result.y = Math.min(point.y, bounds.y + bounds.height); // Adjust the y position
+    result.height = Math.abs(bounds.y + bounds.height - point.y); // Adjust height
   }
+
+  // Handle resizing from the bottom
   if ((corner & Side.Bottom) === Side.Bottom) {
-    result.y = Math.min(point.y + bounds.y);
-    result.height = Math.abs(point.y - bounds.y);
+    result.height = Math.abs(point.y - bounds.y); // Just adjust the height
   }
 
   return result;
