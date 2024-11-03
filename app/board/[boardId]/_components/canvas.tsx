@@ -76,6 +76,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
       layerType:
         | LayerType.Rectangle
         | LayerType.Ellipse
+        | LayerType.Triangle
         | LayerType.Text
         | LayerType.Note,
       position: Point

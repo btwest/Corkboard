@@ -4,6 +4,7 @@ import {
   Type,
   StickyNote,
   Square,
+  Triangle,
   Circle,
   Pencil,
   Undo2,
@@ -100,6 +101,20 @@ export const Toolbar = ({
           isActive={
             canvasState.mode === CanvasMode.Inserting &&
             canvasState.layerType === LayerType.Ellipse
+          }
+        />
+        <ToolButton
+          label="Triangle"
+          icon={Triangle}
+          onClick={() =>
+            setCanvasState({
+              mode: CanvasMode.Inserting,
+              layerType: LayerType.Triangle,
+            })
+          }
+          isActive={
+            canvasState.mode === CanvasMode.Inserting &&
+            canvasState.layerType === LayerType.Triangle
           }
         />
         <ToolButton

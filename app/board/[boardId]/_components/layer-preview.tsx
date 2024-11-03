@@ -5,6 +5,7 @@ import { LayerType } from "@/types/canvas";
 import { memo } from "react";
 import { Rectangle } from "./rectangle";
 import { Ellipse } from "./ellipse";
+import { Triangle } from "./triangle";
 import { Text } from "./text";
 import { Note } from "./note";
 import { Path } from "./path";
@@ -67,6 +68,15 @@ export const LayerPreview = memo(
       case LayerType.Rectangle:
         return (
           <Rectangle
+            id={id}
+            layer={layer}
+            onPointerDown={onLayerPointerDown}
+            selectionColor={selectionColor}
+          />
+        );
+      case LayerType.Triangle:
+        return (
+          <Triangle
             id={id}
             layer={layer}
             onPointerDown={onLayerPointerDown}

@@ -12,6 +12,7 @@ export type Camera = {
 export enum LayerType {
   Rectangle,
   Ellipse,
+  Triangle,
   Path,
   Text,
   Note,
@@ -29,6 +30,16 @@ export type RectangleLayer = {
 
 export type EllipseLayer = {
   type: LayerType.Ellipse;
+  x: number;
+  y: number;
+  height: number;
+  width: number;
+  fill: Color;
+  value?: string;
+};
+
+export type TriangleLayer = {
+  type: LayerType.Triangle;
   x: number;
   y: number;
   height: number;
@@ -97,6 +108,7 @@ export type CanvasState =
       mode: CanvasMode.Inserting;
       layerType:
         | LayerType.Ellipse
+        | LayerType.Triangle
         | LayerType.Rectangle
         | LayerType.Text
         | LayerType.Note;
@@ -118,6 +130,7 @@ export enum CanvasMode {
 export type Layer =
   | RectangleLayer
   | EllipseLayer
+  | TriangleLayer
   | PathLayer
   | TextLayer
   | NoteLayer;
